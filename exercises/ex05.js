@@ -20,6 +20,31 @@ Use some sort of looping. Do Not use String.prototype.replace
 
 const urlEncode = function (text) {
   // Put your solution here
+  const urlEncode = function (text) {
+  let result = "";
+  let start = 0;
+  let end = text.length - 1;
+
+  // remove leading whitespace
+  while (start <= end && text[start] === " ") {
+    start++;
+  }
+
+  // remove trailing whitespace
+  while (end >= start && text[end] === " ") {
+    end--;
+  }
+
+  // encode spaces in between
+  for (let i = start; i <= end; i++) {
+    if (text[i] === " ") {
+      result += "%20";
+    } else {
+      result += text[i];
+    }
+  }
+
+  return result;
 };
 
 console.log(urlEncode("cornerstone college")); //cornerstone%20college
