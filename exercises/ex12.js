@@ -20,8 +20,24 @@ This one is a doozy! We might want to start by creating a helper function called
 
 */
 
+const ingredientCheck = function (bakery, ingredients) {
+  for (const ingredient of ingredients) {
+    if (bakery.includes(ingredient)) {
+      return true;
+    }
+  }
+  return false;
+};
+
 const chooseRecipe = function (bakeryA, bakeryB, recipes) {
-  // Code here!
+  for (const recipe of recipes) {
+    const hasFromA = ingredientCheck(bakeryA, recipe.ingredients);
+    const hasFromB = ingredientCheck(bakeryB, recipe.ingredients);
+
+    if (hasFromA && hasFromB) {
+      return recipe.name;
+    }
+  }
 };
 
 let bakeryA = ["saffron", "eggs", "tomato paste", "coconut", "custard"];
